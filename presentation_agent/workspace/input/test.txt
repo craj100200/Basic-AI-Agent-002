@@ -1,0 +1,11 @@
+[SLIDE_START]
+[TITLE_START]Introduction[TITLE_END]
+AI is transforming the world
+It enables automation
+[SLIDE_END]
+
+[SLIDE_START]
+[TITLE_START]Conclusion[TITLE_END]
+AI will continue growing
+Prepare for the future
+[SLIDE_END]
