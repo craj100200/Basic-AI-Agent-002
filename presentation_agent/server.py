@@ -1,5 +1,7 @@
 from fastapi import FastAPI
 from presentation_agent.tools.text_parser import parse_slides
+from presentation_agent.tools.slide_renderer import render_slides
+
 import os
 
 app = FastAPI()
@@ -33,4 +35,19 @@ def test_parser():
     return {
         "slides": slides,
         "count": len(slides)
+    }
+
+
+@app.get("/testSlides")
+def test_slides():
+
+    file_path = "presentation_agent/workspace/input/test.txt"
+
+    slides = parse_slides(file_path)
+
+    images = render_slides(slides)
+
+    return {
+        "images": images,
+        "count": len(images)
     }
