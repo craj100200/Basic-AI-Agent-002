@@ -1,6 +1,8 @@
 from fastapi import FastAPI
 from presentation_agent.tools.text_parser import parse_slides
 from presentation_agent.tools.slide_renderer import render_slides
+from presentation_agent.tools.video_renderer import create_video
+
 
 import os
 
@@ -51,3 +53,15 @@ def test_slides():
         "images": images,
         "count": len(images)
     }
+
+
+@app.get("/testVideo")
+def test_video():
+    try:
+        slides_file = "presentation_agent/workspace/input/test.txt"
+        slides = parse_slides(slides_file)
+        images = render_slides(slides)
+        output_file = create_video(images, output_filename="presentation_agent/workspace/output/test_video.mp4")
+        return {"video_file": output_file, "slides": len(images)}
+    except Exception as e:
+        return {"error": str(e)}
