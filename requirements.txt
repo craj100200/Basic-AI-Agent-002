@@ -5,5 +5,4 @@ Pillow
 moviepy
 imageio
 imageio[ffmpeg]
-imageio-ffmpeg
 numpy
