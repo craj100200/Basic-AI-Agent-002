@@ -41,7 +41,7 @@ def create_video(image_paths, output_filename=None, duration_per_slide=DEFAULT_D
             if not os.path.exists(img_path):
                 logger.warning(f"Image not found, skipping: {img_path}")
                 continue
-            clip = ImageClip(img_path).set_duration(duration_per_slide)
+            clip = ImageClip(img_path).with_duration(duration_per_slide)
             clips.append(clip)
 
         if not clips:
