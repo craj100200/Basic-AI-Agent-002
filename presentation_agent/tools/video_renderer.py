@@ -1,6 +1,6 @@
 import os
 import logging
-from moviepy.editor import ImageClip, concatenate_videoclips
+from moviepy import ImageClip, concatenate_videoclips
 
 # Setup logging
 logger = logging.getLogger("video_renderer")
