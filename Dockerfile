@@ -1,21 +1,21 @@
 FROM python:3.12-slim
 
-# Install system dependencies
-RUN apt-get update && apt-get install -y ffmpeg && rm -rf /var/lib/apt/lists/*
+# Install system dependencies first
+RUN apt-get update && \
+    apt-get install -y ffmpeg git && \
+    rm -rf /var/lib/apt/lists/*
 
 WORKDIR /app
 
-# Copy requirements from root
+# Copy requirements and install
 COPY requirements.txt .
-
-# Install Python dependencies
 RUN pip install --no-cache-dir -r requirements.txt
 
-# Copy project folder
+# Copy the application code
 COPY presentation_agent/ ./presentation_agent
 
-# Expose port for Render
+# Expose port
 EXPOSE 10000
 
-# Start the server
+# Start server
 CMD ["uvicorn", "presentation_agent.server:app", "--host", "0.0.0.0", "--port", "10000"]
