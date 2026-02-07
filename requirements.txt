@@ -1,7 +1,5 @@
+pillow
+moviepy
 fastapi
 uvicorn
 python-multipart
-moviepy
-imageio[ffmpeg]
-Pillow
-numpy
